@@ -1606,6 +1606,9 @@ contexts:
       set: alias-new-assign
     - include: not-whitespace-illegal-pop
   alias-new-assign:
+    - match: '=\s*(?={{identifier_ref}}\s*\()'
+      push: [function-argument-definition-list, type]
+      pop: true
     - match: '='
       scope: keyword.operator.assignment.d
       set: [alias-new-after-type, value]
